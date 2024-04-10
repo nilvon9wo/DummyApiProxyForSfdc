@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
+        <members>DAO_DummyApiSettingsSelector</members>
+        <members>DAP_DummyApiClient</members>
         <members>DAP_DummyApiProxyAuraCtrl</members>
         <members>DAP_DummyApiProxyException</members>
+        <members>DAP_DummyApiProxyService</members>
+        <members>DAP_UserDataEnvelope</members>
+        <members>DAP_UserInputDto</members>
         <members>DAP_UserOutputDto</members>
+        <members>J2O_JsonToApexObjectParser</members>
+        <members>J2O_ParserConfig</members>
         <name>ApexClass</name>
     </types>
     <types>
