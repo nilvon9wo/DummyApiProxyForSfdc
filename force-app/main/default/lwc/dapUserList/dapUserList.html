@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="User List" icon-name="utility:user">
+        <c-errors errors={errors}></c-errors>
+        <template lwc:if={showNoUsers}>
+            <p>No users returned.</p>
+        </template>
+        <template lwc:else>
+            <ul>
+                <template for:each={users} for:item="user">
+                    <c-dap-user-item key={user.id} user={user}></c-dap-user-item>
+                </template>
+            </ul>
+        </template>
+    </lightning-card>
+</template>

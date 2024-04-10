@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>DAP_DummyApiProxyAuraCtrl</members>
+        <members>DAP_DummyApiProxyException</members>
+        <members>DAP_UserOutputDto</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>Dummy_Api_Proxy_App</members>
+        <name>FlexiPage</name>
+    </types>
+    <types>
+        <members>dapDummyApiProxy</members>
+        <members>dapUserItem</members>
+        <members>dapUserList</members>
+        <members>errors</members>
+        <members>ldsUtilities</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <version>60.0</version>
+</Package>
