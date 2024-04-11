@@ -1,22 +1,30 @@
 public with sharing class DAP_DummyApiClient {
-    private final DAO_DummyApiSettingsSelector dummyApiSettingsSelector;
+    private final DAP_DummyApiClientUserRequestFty userRequestFactory;
+    private final Http http;
     private final J2O_JsonToApexObjectParser jsonToApexObjectParser;
     private final J2O_ParserConfig parserConfig;
 
     private DAP_DummyApiClient(
-            DAO_DummyApiSettingsSelector dummyApiSettingsSelector,
+            DAP_DummyApiClientUserRequestFty userRequestFactory,
+            Http http,
             J2O_JsonToApexObjectParser jsonToApexObjectParser,
             J2O_ParserConfig parserConfig
         )
     {
-        this.dummyApiSettingsSelector = dummyApiSettingsSelector;
+        this.userRequestFactory = userRequestFactory;
+        this.http = http;
         this.jsonToApexObjectParser = jsonToApexObjectParser;
         this.parserConfig = parserConfig;
     }
 
     private DAP_DummyApiClient()
     {
-        this(DAO_DummyApiSettingsSelector.getInstance(), J2O_JsonToApexObjectParser.getInstance(), createParserConfig());
+        this(
+                DAP_DummyApiClientUserRequestFty.getInstance(),
+                new Http(),
+                J2O_JsonToApexObjectParser.getInstance(),
+                createParserConfig()
+        );
     }
 
     private static J2O_ParserConfig createParserConfig() {
@@ -40,12 +48,15 @@ public with sharing class DAP_DummyApiClient {
 
 
     public DAP_UserDataEnvelope getUsers() {
-        /* TODO
-            1. Get custom settings.
-            2. Request users from Dummy Api
-         */
-        String response = '';
-        return (DAP_UserDataEnvelope) this.jsonToApexObjectParser.parseDocumentToObject(response, parserConfig);
+        HttpRequest request = this.userRequestFactory.create();
+        System.debug(LoggingLevel.DEBUG, '############ request' + request);
+        System.debug(LoggingLevel.DEBUG, '############ request app-id' + request.getHeader('app-id'));
+        HttpResponse response = this.http.send(request);
+        System.debug(LoggingLevel.DEBUG, '############ response' + response);
+        String responseBody = response.getBody();
+        System.debug(LoggingLevel.DEBUG, '############ responseBody' + responseBody);
+        return (DAP_UserDataEnvelope) this.jsonToApexObjectParser
+                .parseDocumentToObject(responseBody, parserConfig);
     }
 
 

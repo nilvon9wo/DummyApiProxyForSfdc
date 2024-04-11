@@ -11,6 +11,7 @@
         <members>DAP_UserOutputDto</members>
         <members>J2O_JsonToApexObjectParser</members>
         <members>J2O_ParserConfig</members>
+        <members>DAP_DummyApiClientUserRequestFty</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -24,6 +25,25 @@
         <members>errors</members>
         <members>ldsUtilities</members>
         <name>LightningComponentBundle</name>
+    </types>
+    <types>
+        <members>Dummy_Api_Settings__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>Dummy_Api_Api_Key</members>
+        <name>ExternalCredential</name>
+    </types>
+    <types>
+        <members>Dummy_Api_Named_Credential</members>
+        <name>NamedCredential</name>
+    </types>
+    <types>
+        <members>Dummy_Api_Permissions</members>
+        <name>PermissionSet</name>
     </types>
     <version>60.0</version>
 </Package>
