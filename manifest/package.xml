@@ -12,6 +12,7 @@
         <members>J2O_JsonToApexObjectParser</members>
         <members>J2O_ParserConfig</members>
         <members>DAP_DummyApiClientUserRequestFty</members>
+        <members>DAP_ErrorInputDto</members>
         <name>ApexClass</name>
     </types>
     <types>

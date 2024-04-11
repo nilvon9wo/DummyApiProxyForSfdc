@@ -2,7 +2,7 @@
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <externalCredentialPrincipalAccesses>
         <enabled>true</enabled>
-        <externalCredentialPrincipal>Dummy_Api_Api_Key-Dummy Api Principal</externalCredentialPrincipal>
+        <externalCredentialPrincipal>DummyApiExternalCredential-Dummy Api Principal</externalCredentialPrincipal>
     </externalCredentialPrincipalAccesses>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Dummy Api Permissions</label>

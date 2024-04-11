@@ -49,15 +49,19 @@ public with sharing class DAP_DummyApiClient {
 
     public DAP_UserDataEnvelope getUsers() {
         HttpRequest request = this.userRequestFactory.create();
-        System.debug(LoggingLevel.DEBUG, '############ request' + request);
-        System.debug(LoggingLevel.DEBUG, '############ request app-id' + request.getHeader('app-id'));
         HttpResponse response = this.http.send(request);
-        System.debug(LoggingLevel.DEBUG, '############ response' + response);
         String responseBody = response.getBody();
-        System.debug(LoggingLevel.DEBUG, '############ responseBody' + responseBody);
-        return (DAP_UserDataEnvelope) this.jsonToApexObjectParser
-                .parseDocumentToObject(responseBody, parserConfig);
+
+        Integer statusCode = response.getStatusCode();
+        if (statusCode >= 200 && statusCode <= 299) {
+            return (DAP_UserDataEnvelope) this.jsonToApexObjectParser
+                    .parseDocumentToObject(responseBody, parserConfig);
+        }
+        else
+        {
+            DAP_ErrorInputDto errorDto = (DAP_ErrorInputDto) this.jsonToApexObjectParser
+                    .parseDocumentToObject(responseBody, DAP_ErrorInputDto.class);
+            throw DAP_DummyApiProxyException.CreateFor(response, errorDto);
+        }
     }
-
-
 }
