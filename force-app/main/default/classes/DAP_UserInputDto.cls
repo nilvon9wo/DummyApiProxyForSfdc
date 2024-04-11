@@ -1,3 +1,4 @@
+//noinspection ApexUnusedDeclaration
 public with sharing class DAP_UserInputDto {
     public String id { get; set; }
     public String title { get; set; }
