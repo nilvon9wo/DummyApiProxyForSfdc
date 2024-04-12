@@ -36,7 +36,7 @@
         <name>CustomField</name>
     </types>
     <types>
-        <members>Dummy_Api_Api_Key</members>
+        <members>DummyApiExternalCredential</members>
         <name>ExternalCredential</name>
     </types>
     <types>
