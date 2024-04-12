@@ -29,6 +29,7 @@
     </types>
     <types>
         <members>Dummy_Api_Settings__c</members>
+        <members>UserExternalCredential</members>
         <name>CustomObject</name>
     </types>
     <types>
