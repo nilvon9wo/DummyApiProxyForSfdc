@@ -6,15 +6,13 @@ export default class DapUserList extends LightningElement {
     @track users = [];
     @track errors = false;
     connectedCallback() {
-                         getDummyApiUsers({
-                                 birthdate: this.minimumBirthDate
-                             })
-                     .then(users => {
-                             if (users) {
-                                this.users = users;
-                                this.errors = false;
-                             }
-                        })
+                         getDummyApiUsers()
+                         .then(users => {
+                                 if (users) {
+                                    this.users = users;
+                                    this.errors = false;
+                                 }
+                            })
                          .catch(error => {
                                  this.users = [];
                                  this.errors = reduceErrors(error);
