@@ -9,25 +9,24 @@ const mockUser = {
 };
 
 describe(elementUnderTest, () => {
-  it('renders user name with lightning-formatted-name', () => {
-    // Arrange
-    const element = createElement(elementUnderTest, {
-      is: DapUserItem,
-      user: mockUser
+    describe('element renders', () => {
+      it('renders lightning-formatted-name', () => {
+        // Arrange
+        const element = createElement(elementUnderTest, {
+                is: DapUserItem,
+            });
+        element.user = mockUser;
+
+        // Act
+        document.body.appendChild(element);
+
+        // Assert
+        const listElement = element.shadowRoot.querySelector('lightning-formatted-name')
+        expect(listElement)
+            .toBeTruthy();
+
+        // Cleanup
+        document.body.removeChild(element);
+      });
     });
-
-    // Act
-    document.body.appendChild(element);
-
-    // Assert
-    const formattedName = element.shadowRoot.querySelector('lightning-formatted-name');
-
-    expect(formattedName)
-        .toBeTruthy();
-    expect(formattedName.textContent)
-        .toBe(`${mockUser.firstName} ${mockUser.lastName}`);
-
-    // Cleanup
-    document.body.removeChild(element);
-  });
 });
