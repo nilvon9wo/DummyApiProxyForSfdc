@@ -90,5 +90,24 @@ describe(elementUnderTest, () => {
                 expect(noUsersMessage.textContent).toBe('No users returned.');
           });
     });
+
+    it('handles errors from getDummyApiUsers', async () => {
+      // Arrange
+      const mockError = new Error('Simulated error from getDummyApiUsers');
+      getDummyApiUsers.mockRejectedValue(mockError);
+      const element = createElement(elementUnderTest, {
+        is: DapUserList
+      });
+
+      // Act
+      document.body.appendChild(element);
+      await Promise.resolve();
+      return Promise.resolve()
+            .then(() => {
+                  // Assert
+                  const errorElement = element.shadowRoot.querySelector('c-errors');
+                  expect(errorElement).not.toBeNull();
+              });
+    });
   });
 });
