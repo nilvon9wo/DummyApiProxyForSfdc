@@ -33,7 +33,7 @@ describe(elementUnderTest, () => {
   });
 
   describe('getDummyApiUsers @wire data', () => {
-    it('renders one user', () => {
+    it('renders one user', async () => {
       // Arrange
      getDummyApiUsers.mockResolvedValue(mockGetDummyApiUsersWithOneUser);
      const element = createElement(elementUnderTest, {
@@ -42,7 +42,7 @@ describe(elementUnderTest, () => {
 
       // Act
       document.body.appendChild(element);
-
+      await Promise.resolve();
       return Promise.resolve()
         .then(() => {
               // Assert
@@ -51,7 +51,7 @@ describe(elementUnderTest, () => {
           });
     });
 
-    it('renders multiple users', () => {
+    it('renders multiple users', async () => {
       // Arrange
       getDummyApiUsers.mockResolvedValue(mockGetDummyApiUsersWithMultipleUsers);
       const element = createElement(elementUnderTest, {
@@ -60,7 +60,7 @@ describe(elementUnderTest, () => {
 
       // Act
       document.body.appendChild(element);
-
+      await Promise.resolve();
       return Promise.resolve()
         .then(() => {
               // Assert
@@ -69,7 +69,7 @@ describe(elementUnderTest, () => {
           });
     });
 
-    it('renders no users', () => {
+    it('renders no users', async () => {
       // Arrange
       getDummyApiUsers.mockResolvedValue(mockGetDummyApiUsersWithNoUsers);
       const element = createElement(elementUnderTest, {
@@ -78,15 +78,16 @@ describe(elementUnderTest, () => {
 
       // Act
       document.body.appendChild(element);
-
+      await Promise.resolve();
       return Promise.resolve()
         .then(() => {
               // Assert
               const userElements = element.shadowRoot.querySelectorAll(childUserElement);
               expect(userElements.length).toBe(mockGetDummyApiUsersWithNoUsers.length);
 
-              const noUsersMessage = element.shadowRoot.querySelectorAll('p');
-              expect(noUsersMessage.textContent).toBe('No users returned.');
+                const noUsersMessage = element.shadowRoot.querySelector('p');
+                expect(noUsersMessage).not.toBeNull();
+                expect(noUsersMessage.textContent).toBe('No users returned.');
           });
     });
   });
