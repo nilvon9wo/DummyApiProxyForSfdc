@@ -18,14 +18,14 @@ It will most likely work under different environments, but compatibility is not 
    git clone https://github.com/nilvon9wo/DummyApiProxy.git
    ```
 
-1. **Deploy to your Salesforce org**
+2. **Deploy to your Salesforce org**
   
    The simplest solution may be to connect your IDE (e.g. Intelli-J with Illuminated Cloud) to your org,
    and then use your IDE for deployment.
    
    Alternatively, to use the Salesforce CLI, see [Salesforce CLI Command Reference / sf / deploy Commands](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_deploy_commands_unified.htm)
 
-1. **Configure API Key**
+3. **Configure API Key**
 In your Salesforce org:
    1. Click the gear in the upper right.
    2. Click Setup.
@@ -38,7 +38,6 @@ In your Salesforce org:
    9. Give Parameter 1 the name "DummyApiClientKey".
    10. Assign your dummyapi.io API key to "Value"
 
-
 4. **Authorize users**
    Grant one or more users to the "Dummy_Api_Permissions" Permission Set.
 
@@ -46,7 +45,7 @@ In your Salesforce org:
 
 5. **View the Lightning App**
    1. Click the App Launcher (a.k.a. Navigation Grid/Menu, Waffle Menu).
-   1. Search for and select "Dummy Api Proxy App"
+   2. Search for and select "Dummy Api Proxy App"
    
 ## Contributing
 Feel free to fork the project and submit pull requests for any improvements or fixes.
